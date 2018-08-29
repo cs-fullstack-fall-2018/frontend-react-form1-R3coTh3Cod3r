@@ -1,23 +1,44 @@
 import React, { Component } from 'react';
-import logo from "./logo.svg";
+//import logo from "./logo.svg";
 
 class PersonStats extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            Name: "", Age: "", Feeling: ""};
+        this.state = {Name: "", Age: "", Feeling: ""}
+    }
+
 personFunction = (event) => {
-            console.log("Submitted Form");
-            this.setState({})
-}
+    this.setState({Name: event.target.value});
+
+};
+ageFunction = (event) => {
+    this.setState({Age: event.target.value});
+
+};
+feelingFunction = (event) => {
+this.setState({Feeling:event.target.value});
+
+};
+submitionFunction = (event) => {
+    console.log("Submitted Form");
+    event.preventDefault()
+};
+        render(){
+
 
         return (
             <div>
-                <form onSubmit={this.personFunction}>
 
-                    <h1>Person 1</h1>
-                    <label htmlFor="Name">Name: </label>
-                    <input type="text" placeholder="enter your name"
+                <form onSubmit={this.submitionFunction}>
+                    <h1>Person Stats</h1>
+                    <label>Name:</label>
+                    <input type="text" placeholder={"Enter your name"} id="Name" value={this.state.Name} onChange={this.personFunction}/>
+                    <label>Age:</label>
+                    <input type={"text"} placeholder={"Enter your age"} id={"Age"} value={this.state.Age} onChange={this.ageFunction}/>
+                    <label>Feeling:</label>
+                    <input type={"text"} placeholder={"How do you feel"} id={"Feeling"} value={this.state.Feeling} onChange={this.feelingFunction}/>
+                    <br/>
+                    <button>Submit</button>
 
             </form>
             </div>
